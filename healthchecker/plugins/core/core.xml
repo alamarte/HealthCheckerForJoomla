@@ -2,12 +2,12 @@
 <extension type="plugin" group="healthchecker" method="upgrade">
     <name>plg_healthchecker_core</name>
     <author>Phil E. Taylor</author>
-    <creationDate>2026-03-02</creationDate>
+    <creationDate>2026-03-03</creationDate>
     <copyright>(C) 2026 mySites.guru / Phil E. Taylor</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>phil@phil-taylor.com</authorEmail>
     <authorUrl>https://mySites.guru</authorUrl>
-    <version>3.7.2</version>
+    <version>3.8.1</version>
     <description>PLG_HEALTHCHECKER_CORE_XML_DESCRIPTION</description>
     <namespace path="src">MySitesGuru\HealthChecker\Plugin\Core</namespace>
     <scriptfile>script.php</scriptfile>
@@ -2203,6 +2203,28 @@
                 </field>
                 <field
                     name="export_extensions_plugin_order"
+                    type="list"
+                    label="PLG_HEALTHCHECKER_CORE_EXPORT_VISIBILITY"
+                    default="always"
+                    class="form-select-sm"
+                >
+                    <option value="always">PLG_HEALTHCHECKER_CORE_EXPORT_ALWAYS</option>
+                    <option value="issues">PLG_HEALTHCHECKER_CORE_EXPORT_ISSUES_ONLY</option>
+                    <option value="never">PLG_HEALTHCHECKER_CORE_EXPORT_NEVER</option>
+                </field>
+
+                <field
+                    name="check_extensions_search_filters"
+                    type="radio"
+                    label="PLG_HEALTHCHECKER_CORE_CHECK_EXTENSIONS_SEARCH_FILTERS_TITLE"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+                >
+                    <option value="1">JENABLED</option>
+                    <option value="0">JDISABLED</option>
+                </field>
+                <field
+                    name="export_extensions_search_filters"
                     type="list"
                     label="PLG_HEALTHCHECKER_CORE_EXPORT_VISIBILITY"
                     default="always"
