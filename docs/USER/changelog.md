@@ -9,6 +9,11 @@ A complete history of features, fixes, and improvements across every release.
 
 ## Version 3.8
 
+### [3.8.2](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.2) <Badge type="info" text="4 Mar 2026" />
+
+- [Feature] Added es-ES translations for `fields_search_index` and `search_filters` checks ([#94](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/94)) (Thanks [@alamarte](https://github.com/alamarte))
+- [Fix] Fixed unmatched single quote in release script heredoc
+
 ### [3.8.1](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.1) <Badge type="info" text="3 Mar 2026" />
 
 - [Internal] Rebuilt documentation
