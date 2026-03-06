@@ -11,6 +11,11 @@ A complete history of features, fixes, and improvements across every release.
 
 ## Version 3.8
 
+### [3.8.3](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.3)&#x20;
+
+* \[Internal] Updated es-ES Spanish translations to v3.8.2 ([#96](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/96)) (Thanks [@alamarte](https://github.com/alamarte))
+* \[Internal] Rebuilt documentation
+
 ### [3.8.2](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.2)&#x20;
 
 * \[Feature] Added es-ES translations for `fields_search_index` and `search_filters` checks ([#94](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/94)) (Thanks [@alamarte](https://github.com/alamarte))
