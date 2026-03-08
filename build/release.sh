@@ -8,9 +8,9 @@ set -e
 # Allow claude_print to work when called from within a Claude Code session
 unset CLAUDECODE
 
-# Helper: run claude_print without picking up project config that interferes
+# Helper: run claude --print from /tmp to avoid loading project CLAUDE.md/memory
 claude_print() {
-    claude_print --no-session-persistence --disable-slash-commands "$@"
+    (cd /tmp && claude --print --no-session-persistence --disable-slash-commands --model sonnet "$@")
 }
 
 # Configuration
