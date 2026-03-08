@@ -11,6 +11,10 @@ A complete history of features, fixes, and improvements across every release.
 
 ## Version 3.9
 
+### [3.9.1](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.1)&#x20;
+
+* \[Fix] Plugins and module are no longer re-enabled or re-published on extension updates, only on fresh installs ([#106](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/106)) (Thanks [@nzrunner](https://github.com/nzrunner))
+
 ### [3.9.0](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.0)&#x20;
 
 * \[Feature] Sitemap check now detects dynamically generated sitemaps via HTTP fallback when no physical sitemap file exists on disk ([#105](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/105)) (Thanks [@nzrunner](https://github.com/nzrunner))
