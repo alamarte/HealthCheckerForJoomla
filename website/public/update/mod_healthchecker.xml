@@ -6,12 +6,12 @@
         <element>mod_healthchecker</element>
         <type>module</type>
         <client>administrator</client>
-        <version>3.8.4</version>
+        <version>3.8.5</version>
         <infourl title="Health Checker">https://github.com/mySites-guru/HealthCheckerForJoomla</infourl>
         <downloads>
-            <downloadurl type="full" format="zip">https://www.joomlahealthchecker.com/downloads/mod_healthchecker-3.8.4.zip</downloadurl>
+            <downloadurl type="full" format="zip">https://www.joomlahealthchecker.com/downloads/mod_healthchecker-3.8.5.zip</downloadurl>
         </downloads>
-        <sha512>d6a55a488a5ea46e9425ff22ff86c7b1fd88ae43389321f5f922318c05993adfaf77be076af49c6743806ac5fbf194ebc646307f10daa70909b15186d1f0a09c</sha512>
+        <sha512>ac01156daf8ab3cafe476d9d15478da74cdd2ac3a5126dd758b94d8f1283cca331c3da7ca6235b1be3155514ec9080f0cd27b394eca842fe25892e480cf70231</sha512>
         <tags>
             <tag>stable</tag>
         </tags>
