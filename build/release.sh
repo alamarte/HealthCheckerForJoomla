@@ -99,7 +99,7 @@ if [ -z "$LAST_TAG" ]; then
     CLOSED_ISSUES=""
 else
     echo -e "${BLUE}Last release: ${LAST_TAG}${NC}"
-    GIT_LOG=$(git log --pretty=format:"%h %s" --no-merges "${LAST_TAG}..HEAD")
+    GIT_LOG=$(git log --pretty=format:"%h %s" "${LAST_TAG}..HEAD")
 
     # Fetch closed issues and merged PRs since last tag
     LAST_TAG_DATE=$(git log -1 --format=%aI "$LAST_TAG" 2>/dev/null || echo "")
@@ -187,7 +187,7 @@ CRITICAL FORMATTING RULES:
 Example:
 - [Release] Initial release of Health Checker for Joomla
 - [Feature] Over 130 health checks across 8+ categories"
-elif [ -z "$GIT_LOG" ] && [ -n "$LAST_TAG" ]; then
+elif [ -z "$GIT_LOG" ] && [ -n "$LAST_TAG" ] && [ -z "$CLOSED_ISSUES" ]; then
     CLAUDE_PROMPT="Generate release notes for Health Checker for Joomla version ${NEW_VERSION}.
 
 There are no commits since ${LAST_TAG}. This is a maintenance release.

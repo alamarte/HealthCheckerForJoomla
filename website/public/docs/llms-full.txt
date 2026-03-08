@@ -1263,7 +1263,8 @@ A complete history of features, fixes, and improvements across every release.
 
 ### [3.8.5](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.5)&#x20;
 
-* Maintenance release
+* \[Fix] Fixed Media Manager Thumbnails check reading wrong parameter, causing it to always report thumbnails as disabled ([#100](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/100)) ([#104](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/104)) (Thanks [@nzrunner](https://github.com/nzrunner))
+* \[Fix] Fixed Twitter Card check not detecting `property` attribute, only matching `name` attribute ([#101](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/101)) ([#103](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/103)) (Thanks [@nzrunner](https://github.com/nzrunner))
 
 ### [3.8.4](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.4)&#x20;
 
