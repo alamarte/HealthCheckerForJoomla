@@ -9,6 +9,10 @@ A complete history of features, fixes, and improvements across every release.
 
 ## Version 3.9
 
+### [3.9.3](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.3) <Badge type="info" text="9 Mar 2026" />
+
+- [Fix] Fixed Open Graph meta tags not being recognized when using the `name=` attribute instead of `property=`, resolving false positives in SEO checks ([#109](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/109)) (Thanks [@nzrunner](https://github.com/nzrunner))
+
 ### [3.9.2](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.2) <Badge type="info" text="8 Mar 2026" />
 
 - [Feature] Added support for checking alternative sitemap paths to detect dynamically generated XML sitemaps ([#102](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/102)) (Thanks [@nzrunner](https://github.com/nzrunner))
