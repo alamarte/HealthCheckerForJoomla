@@ -2,12 +2,12 @@
 <extension type="plugin" group="healthchecker" method="upgrade">
     <name>plg_healthchecker_core</name>
     <author>Phil E. Taylor</author>
-    <creationDate>2026-03-04</creationDate>
+    <creationDate>2026-03-09</creationDate>
     <copyright>(C) 2026 mySites.guru / Phil E. Taylor</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>phil@phil-taylor.com</authorEmail>
     <authorUrl>https://mySites.guru</authorUrl>
-    <version>3.8.2</version>
+    <version>3.9.3</version>
     <description>PLG_HEALTHCHECKER_CORE_XML_DESCRIPTION</description>
     <namespace path="src">MySitesGuru\HealthChecker\Plugin\Core</namespace>
     <scriptfile>script.php</scriptfile>
@@ -2027,6 +2027,28 @@
                 </field>
                 <field
                     name="export_extensions_disabled_extensions"
+                    type="list"
+                    label="PLG_HEALTHCHECKER_CORE_EXPORT_VISIBILITY"
+                    default="always"
+                    class="form-select-sm"
+                >
+                    <option value="always">PLG_HEALTHCHECKER_CORE_EXPORT_ALWAYS</option>
+                    <option value="issues">PLG_HEALTHCHECKER_CORE_EXPORT_ISSUES_ONLY</option>
+                    <option value="never">PLG_HEALTHCHECKER_CORE_EXPORT_NEVER</option>
+                </field>
+
+                <field
+                    name="check_extensions_fields_search_index"
+                    type="radio"
+                    label="PLG_HEALTHCHECKER_CORE_CHECK_EXTENSIONS_FIELDS_SEARCH_INDEX_TITLE"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+                >
+                    <option value="1">JENABLED</option>
+                    <option value="0">JDISABLED</option>
+                </field>
+                <field
+                    name="export_extensions_fields_search_index"
                     type="list"
                     label="PLG_HEALTHCHECKER_CORE_EXPORT_VISIBILITY"
                     default="always"

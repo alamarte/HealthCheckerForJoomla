@@ -7,7 +7,41 @@ description: Complete history of features, fixes, and improvements across every 
 
 A complete history of features, fixes, and improvements across every release.
 
+## Version 3.9
+
+### [3.9.3](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.3) <Badge type="info" text="9 Mar 2026" />
+
+- [Fix] Fixed Open Graph meta tags not being recognized when using the `name=` attribute instead of `property=`, resolving false positives in SEO checks ([#109](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/109)) (Thanks [@nzrunner](https://github.com/nzrunner))
+
+### [3.9.2](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.2) <Badge type="info" text="8 Mar 2026" />
+
+- [Feature] Added support for checking alternative sitemap paths to detect dynamically generated XML sitemaps ([#102](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/102)) (Thanks [@nzrunner](https://github.com/nzrunner))
+
+### [3.9.1](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.1) <Badge type="info" text="8 Mar 2026" />
+
+- [Fix] Plugins and module are no longer re-enabled or re-published on extension updates, only on fresh installs ([#106](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/106)) (Thanks [@nzrunner](https://github.com/nzrunner))
+
+### [3.9.0](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.0) <Badge type="info" text="8 Mar 2026" />
+
+- [Feature] Sitemap check now detects dynamically generated sitemaps via HTTP fallback when no physical sitemap file exists on disk ([#105](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/105)) (Thanks [@nzrunner](https://github.com/nzrunner))
+
 ## Version 3.8
+
+### [3.8.5](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.5) <Badge type="info" text="8 Mar 2026" />
+
+- [Fix] Fixed Media Manager Thumbnails check reading wrong parameter, causing it to always report thumbnails as disabled ([#100](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/100)) ([#104](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/104)) (Thanks [@nzrunner](https://github.com/nzrunner))
+- [Fix] Fixed Twitter Card check not detecting `property` attribute, only matching `name` attribute ([#101](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/101)) ([#103](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/103)) (Thanks [@nzrunner](https://github.com/nzrunner))
+
+### [3.8.4](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.4) <Badge type="info" text="7 Mar 2026" />
+
+- [Fixed] Add missing XML configuration for the Custom Fields Search Index check, so it can be toggled on/off in plugin settings ([#99](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/99)) (Thanks [@alex-revo](https://github.com/alex-revo))
+- [Internal] Add Russian translations for Smart Search Filters and Custom Fields Search Index checks ([#99](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/99)) (Thanks [@alex-revo](https://github.com/alex-revo))
+- [Internal] Rebuilt documentation
+
+### [3.8.3](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.3) <Badge type="info" text="6 Mar 2026" />
+
+- [Internal] Updated es-ES Spanish translations to v3.8.2 ([#96](https://github.com/mySites-guru/HealthCheckerForJoomla/pull/96)) (Thanks [@alamarte](https://github.com/alamarte))
+- [Internal] Rebuilt documentation
 
 ### [3.8.2](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.8.2) <Badge type="info" text="4 Mar 2026" />
 
