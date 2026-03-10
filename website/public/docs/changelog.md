@@ -11,6 +11,11 @@ A complete history of features, fixes, and improvements across every release.
 
 ## Version 3.9
 
+### [3.9.4](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.4)&#x20;
+
+* \[Fix] Fixed translation errors and improved wording in the Spanish (es-ES) language file ([#112](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/112)) (Thanks [@alamarte](https://github.com/alamarte))
+* \[Internal] Restored translator credit in es-ES language file header
+
 ### [3.9.3](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.3)&#x20;
 
 * \[Fix] Fixed Open Graph meta tags not being recognized when using the `name=` attribute instead of `property=`, resolving false positives in SEO checks ([#109](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/109)) (Thanks [@nzrunner](https://github.com/nzrunner))
