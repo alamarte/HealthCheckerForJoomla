@@ -649,12 +649,6 @@ use Joomla\Database\DatabaseInterface;
 
 class Pkg_HealthcheckerInstallerScript
 {
-    /**
-     * Plugins included in this package. Joomla's package uninstaller sometimes
-     * fails to cascade-delete plugins in custom groups, so we handle it manually.
-     */
-    private const PLUGINS = ['core', 'example', 'akeebabackup', 'akeebaadmintools', 'mysitesguru'];
-
     public function preflight(string $type, InstallerAdapter $parent): bool
     {
         if (version_compare(JVERSION, '5.0.0', '<')) {
@@ -670,57 +664,11 @@ class Pkg_HealthcheckerInstallerScript
 
     public function uninstall(InstallerAdapter $parent): void
     {
-        $db = Factory::getContainer()->get(DatabaseInterface::class);
-
-        // Remove all plugins first
-        foreach (self::PLUGINS as $element) {
-            $id = $this->getExtensionId($db, 'plugin', $element, 'healthchecker');
-
-            if ($id) {
-                $installer = new \Joomla\CMS\Installer\Installer();
-                $installer->setPackageUninstall(true);
-                $installer->uninstall('plugin', $id);
-            }
-        }
-
-        // Remove the module
-        $moduleId = $this->getExtensionId($db, 'module', 'mod_healthchecker');
-
-        if ($moduleId) {
-            $installer = new \Joomla\CMS\Installer\Installer();
-            $installer->setPackageUninstall(true);
-            $installer->uninstall('module', $moduleId);
-        }
-
-        // Remove the component
-        $componentId = $this->getExtensionId($db, 'component', 'com_healthchecker');
-
-        if ($componentId) {
-            $installer = new \Joomla\CMS\Installer\Installer();
-            $installer->setPackageUninstall(true);
-            $installer->uninstall('component', $componentId);
-        }
-
-        // Remove the plugin group directory if empty
+        // Remove the plugin group directory if empty after Joomla's cascade
         $groupDir = JPATH_PLUGINS . '/healthchecker';
         if (is_dir($groupDir) && count(glob($groupDir . '/*')) === 0) {
             @rmdir($groupDir);
         }
-    }
-
-    private function getExtensionId(DatabaseInterface $db, string $type, string $element, string $folder = ''): int
-    {
-        $query = $db->getQuery(true)
-            ->select($db->quoteName('extension_id'))
-            ->from($db->quoteName('#__extensions'))
-            ->where($db->quoteName('type') . ' = ' . $db->quote($type))
-            ->where($db->quoteName('element') . ' = ' . $db->quote($element));
-
-        if ($folder !== '') {
-            $query->where($db->quoteName('folder') . ' = ' . $db->quote($folder));
-        }
-
-        return (int) $db->setQuery($query)->loadResult();
     }
 
     public function postflight(string $type, InstallerAdapter $parent): void
