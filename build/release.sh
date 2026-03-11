@@ -622,14 +622,15 @@ cat > "$PKG_DIR/pkg_healthchecker.xml" << EOF
     <description>Comprehensive health check extension for Joomla with over 130 checks across 8+ categories.</description>
     <packager>mySites.guru</packager>
     <packagerurl>https://mysites.guru</packagerurl>
+    <blockChildUninstall>true</blockChildUninstall>
     <files folder="packages">
         <file type="component" id="com_healthchecker">com_healthchecker-${NEW_VERSION}.zip</file>
         <file type="module" id="mod_healthchecker" client="administrator">mod_healthchecker-${NEW_VERSION}.zip</file>
-        <file type="plugin" id="plg_healthchecker_core" group="healthchecker">plg_healthchecker_core-${NEW_VERSION}.zip</file>
-        <file type="plugin" id="plg_healthchecker_example" group="healthchecker">plg_healthchecker_example-${NEW_VERSION}.zip</file>
-        <file type="plugin" id="plg_healthchecker_akeebabackup" group="healthchecker">plg_healthchecker_akeebabackup-${NEW_VERSION}.zip</file>
-        <file type="plugin" id="plg_healthchecker_akeebaadmintools" group="healthchecker">plg_healthchecker_akeebaadmintools-${NEW_VERSION}.zip</file>
-        <file type="plugin" id="plg_healthchecker_mysitesguru" group="healthchecker">plg_healthchecker_mysitesguru-${NEW_VERSION}.zip</file>
+        <file type="plugin" id="core" group="healthchecker">plg_healthchecker_core-${NEW_VERSION}.zip</file>
+        <file type="plugin" id="example" group="healthchecker">plg_healthchecker_example-${NEW_VERSION}.zip</file>
+        <file type="plugin" id="akeebabackup" group="healthchecker">plg_healthchecker_akeebabackup-${NEW_VERSION}.zip</file>
+        <file type="plugin" id="akeebaadmintools" group="healthchecker">plg_healthchecker_akeebaadmintools-${NEW_VERSION}.zip</file>
+        <file type="plugin" id="mysitesguru" group="healthchecker">plg_healthchecker_mysitesguru-${NEW_VERSION}.zip</file>
     </files>
     <scriptfile>script.php</scriptfile>
     <updateservers>
