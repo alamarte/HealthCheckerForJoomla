@@ -95,6 +95,13 @@ final class ImageOptimizationCheck extends AbstractHealthCheck
     {
         $imagesPath = JPATH_ROOT . '/images';
 
+        // Check if path is accessible under open_basedir restrictions
+        if (! $this->isPathAccessibleUnderOpenBasedir($imagesPath)) {
+            return $this->warning(
+                Text::_('COM_HEALTHCHECKER_CHECK_PERFORMANCE_IMAGE_OPTIMIZATION_WARNING_OPEN_BASEDIR'),
+            );
+        }
+
         // If images directory doesn't exist, nothing to check
         if (! is_dir($imagesPath)) {
             return $this->good(Text::_('COM_HEALTHCHECKER_CHECK_PERFORMANCE_IMAGE_OPTIMIZATION_GOOD'));

@@ -89,6 +89,13 @@ final class SessionSavePathCheck extends AbstractHealthCheck
             $savePath = sys_get_temp_dir();
         }
 
+        // Check if path is accessible under open_basedir restrictions
+        if (! $this->isPathAccessibleUnderOpenBasedir($savePath)) {
+            return $this->warning(
+                Text::sprintf('COM_HEALTHCHECKER_CHECK_SYSTEM_SESSION_SAVE_PATH_WARNING_OPEN_BASEDIR', $savePath),
+            );
+        }
+
         // Verify directory exists on filesystem
         if (! is_dir($savePath)) {
             return $this->critical(

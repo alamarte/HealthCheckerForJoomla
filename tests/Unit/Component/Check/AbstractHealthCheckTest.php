@@ -475,6 +475,55 @@ class AbstractHealthCheckTest extends TestCase
         $this->assertSame('/admin/test', $goodResult->actionUrl);
     }
 
+    public function testIsPathAccessibleReturnsTrueWhenNoOpenBasedir(): void
+    {
+        // When open_basedir is not set (empty string), all paths should be accessible
+        $currentOpenBasedir = ini_get('open_basedir');
+
+        if ($currentOpenBasedir !== '' && $currentOpenBasedir !== false) {
+            $this->markTestSkipped('open_basedir is set in this environment');
+        }
+
+        $check = $this->createTestCheckWithOpenBasedir();
+
+        $this->assertTrue($check->callIsPathAccessibleUnderOpenBasedir('/any/path'));
+        $this->assertTrue($check->callIsPathAccessibleUnderOpenBasedir('/usr/sbin/sendmail'));
+        $this->assertTrue($check->callIsPathAccessibleUnderOpenBasedir(sys_get_temp_dir()));
+    }
+
+    public function testIsPathAccessibleReturnsTrueForPathWithinAllowedPaths(): void
+    {
+        $currentOpenBasedir = ini_get('open_basedir');
+
+        if ($currentOpenBasedir === '' || $currentOpenBasedir === false) {
+            $this->markTestSkipped('open_basedir is not set - cannot test path restriction logic');
+        }
+
+        $check = $this->createTestCheckWithOpenBasedir();
+
+        // The current working directory should be within open_basedir
+        $this->assertTrue($check->callIsPathAccessibleUnderOpenBasedir(__DIR__));
+    }
+
+    public function testOpenBasedirHelperHandlesRealPaths(): void
+    {
+        $check = $this->createTestCheckWithOpenBasedir();
+
+        // A path that resolves via realpath should work
+        $tempDir = sys_get_temp_dir();
+        $result = $check->callIsPathAccessibleUnderOpenBasedir($tempDir);
+
+        // Without open_basedir, should always return true
+        $currentOpenBasedir = ini_get('open_basedir');
+
+        if ($currentOpenBasedir === '' || $currentOpenBasedir === false) {
+            $this->assertTrue($result);
+        } else {
+            // With open_basedir, depends on the restriction
+            $this->assertIsBool($result);
+        }
+    }
+
     /**
      * Create a test check instance with exposed protected methods
      */
@@ -566,6 +615,34 @@ class AbstractHealthCheckTest extends TestCase
             public function callGetHttpClient(): \Joomla\CMS\Http\Http
             {
                 return $this->getHttpClient();
+            }
+        };
+    }
+
+    /**
+     * Create a test check with exposed isPathAccessibleUnderOpenBasedir method
+     */
+    private function createTestCheckWithOpenBasedir(): object
+    {
+        return new class extends AbstractHealthCheck {
+            public function getSlug(): string
+            {
+                return 'test.open_basedir';
+            }
+
+            public function getCategory(): string
+            {
+                return 'system';
+            }
+
+            protected function performCheck(): HealthCheckResult
+            {
+                return $this->good('OK');
+            }
+
+            public function callIsPathAccessibleUnderOpenBasedir(string $path): bool
+            {
+                return $this->isPathAccessibleUnderOpenBasedir($path);
             }
         };
     }
