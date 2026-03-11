@@ -82,6 +82,13 @@ final class TempDirectoryCheck extends AbstractHealthCheck
         // Get configured temp path from Joomla config, fallback to JPATH_ROOT/tmp
         $config = Factory::getApplication()->get('tmp_path', JPATH_ROOT . '/tmp');
 
+        // Check if path is accessible under open_basedir restrictions
+        if (! $this->isPathAccessibleUnderOpenBasedir($config)) {
+            return $this->warning(
+                Text::sprintf('COM_HEALTHCHECKER_CHECK_SYSTEM_TEMP_DIRECTORY_WARNING_OPEN_BASEDIR', $config),
+            );
+        }
+
         // Check if directory exists on filesystem
         if (! is_dir($config)) {
             return $this->critical(Text::sprintf('COM_HEALTHCHECKER_CHECK_SYSTEM_TEMP_DIRECTORY_CRITICAL', $config));

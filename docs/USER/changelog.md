@@ -9,6 +9,28 @@ A complete history of features, fixes, and improvements across every release.
 
 ## Version 3.9
 
+### [3.9.9](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.9) <Badge type="info" text="11 Mar 2026" />
+
+- [Fix] Fixed filesystem operations failing when `open_basedir` is enabled, preventing errors on restricted hosting environments ([#115](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/115)) (Thanks [@alex-revo](https://github.com/alex-revo))
+
+### [3.9.8](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.8) <Badge type="info" text="11 Mar 2026" />
+
+- [Internal] Extract zip package build into separate `buildzips.sh` script
+- [Fix] Let Joomla's own cascade handle child extension removal instead of manually managing it
+
+### [3.9.5](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.5) <Badge type="info" text="11 Mar 2026" />
+
+- [Fix] Fixed package uninstall leaving plugins behind when removing the extension package ([#114](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/114))
+- [Fix] Corrected plugin ID attributes in package manifest to ensure child plugins are properly uninstalled
+- [Internal] Updated uninstall documentation to recommend using package removal instead of individual uninstall
+- [Internal] Updated documentation to reflect mySites.guru branding, replacing Panopticon references
+- [Internal] Added documentation page explaining package vs individual installation options
+
+### [3.9.4](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.4) <Badge type="info" text="10 Mar 2026" />
+
+- [Fix] Fixed translation errors and improved wording in the Spanish (es-ES) language file ([#112](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/112)) (Thanks [@alamarte](https://github.com/alamarte))
+- [Internal] Restored translator credit in es-ES language file header
+
 ### [3.9.3](https://github.com/mySites-guru/HealthCheckerForJoomla/releases/tag/v3.9.3) <Badge type="info" text="9 Mar 2026" />
 
 - [Fix] Fixed Open Graph meta tags not being recognized when using the `name=` attribute instead of `property=`, resolving false positives in SEO checks ([#109](https://github.com/mySites-guru/HealthCheckerForJoomla/issues/109)) (Thanks [@nzrunner](https://github.com/nzrunner))

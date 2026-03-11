@@ -24,7 +24,7 @@ Download the latest version from one of these sources:
 
 * **GitHub Releases**: [github.com/mySites-guru/HealthCheckerForJoomla/releases](https://github.com/mySites-guru/HealthCheckerForJoomla/releases)
 
-You'll download a file named `pkg_healthchecker_vX.X.X.zip`
+You'll download a file named `pkg_healthchecker-x.x.x.zip` — the **complete package**. This is the recommended download for most users. See [Package vs Individual Installs](/packages-vs-individual) if you're unsure which file to download.
 
 ## Installation Steps
 
@@ -36,7 +36,7 @@ You'll download a file named `pkg_healthchecker_vX.X.X.zip`
 ### 2. Upload Package
 
 1. Click the **Upload Package File** tab
-2. Click **Browse** and select the `pkg_healthchecker_vX.X.X.zip` file
+2. Click **Browse** and select the `pkg_healthchecker-x.x.x.zip` file
 3. The package will upload and install automatically
 
 ### 3. Verify Installation
@@ -170,15 +170,19 @@ To completely remove Health Checker:
 
 1. Navigate to **System → Manage → Extensions**
 2. Search for "Health Checker"
-3. Select all Health Checker extensions
-4. Click **Uninstall**
+3. Find the **Health Checker for Joomla** package (Type: "Package")
+4. Select it and click **Uninstall**
 
-This removes:
+Uninstalling the package removes everything in one step:
 
 * Component
-* All plugins
+* All plugins (core, example, Akeeba Backup, Akeeba Admin Tools, mySites.guru)
 * Dashboard module
 * All files and folders
+
+::: warning Always uninstall the package, not individual extensions
+Do not uninstall plugins or the component separately. Uninstalling the package handles all sub-extensions automatically.
+:::
 
 **Note**: Health Checker doesn't create database tables, so there's no data to clean up.
 
@@ -223,4 +227,5 @@ mySites.guru = The Original Joomla Health Checker Since 2012. [Start monitoring 
 
 ## Next Steps
 
-Now that Health Checker is installed, continue to [Getting Started](/getting-started) to learn how to use it.
+* [Getting Started](/getting-started) — learn how to use Health Checker
+* [Package vs Individual Installs](/packages-vs-individual) — understand which ZIP to download and why
