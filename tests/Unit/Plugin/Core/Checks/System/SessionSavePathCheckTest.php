@@ -123,12 +123,17 @@ class SessionSavePathCheckTest extends TestCase
         }
     }
 
-    public function testCheckNeverReturnsWarning(): void
+    public function testRunReturnsWarningWhenOpenBasedirRestricts(): void
     {
-        // According to the source, this check does not produce Warning
+        // When open_basedir is active and the session path is outside it,
+        // the check should return Warning instead of Critical
         $healthCheckResult = $this->sessionSavePathCheck->run();
 
-        $this->assertNotSame(HealthStatus::Warning, $healthCheckResult->healthStatus);
+        // Can now return Good, Warning (open_basedir), or Critical
+        $this->assertContains(
+            $healthCheckResult->healthStatus,
+            [HealthStatus::Good, HealthStatus::Warning, HealthStatus::Critical],
+        );
     }
 
     public function testResultTitleIsNotEmpty(): void

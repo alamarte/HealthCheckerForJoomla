@@ -111,6 +111,12 @@ final class MailFunctionCheck extends AbstractHealthCheck
         // Sendmail configuration - verify binary path is executable
         if ($config === 'sendmail') {
             $sendmailPath = Factory::getApplication()->get('sendmail', '/usr/sbin/sendmail');
+            if (! $this->isPathAccessibleUnderOpenBasedir($sendmailPath)) {
+                return $this->warning(
+                    Text::sprintf('COM_HEALTHCHECKER_CHECK_SYSTEM_MAIL_FUNCTION_WARNING_OPEN_BASEDIR', $sendmailPath),
+                );
+            }
+
             if (! is_executable($sendmailPath)) {
                 return $this->warning(
                     Text::sprintf('COM_HEALTHCHECKER_CHECK_SYSTEM_MAIL_FUNCTION_WARNING', $sendmailPath),

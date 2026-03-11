@@ -416,4 +416,44 @@ abstract class AbstractHealthCheck implements HealthCheckInterface
             exportVisibility: $this->getExportVisibility(),
         );
     }
+
+    /**
+     * Check whether a filesystem path is accessible under open_basedir restrictions.
+     *
+     * When open_basedir is configured in php.ini, PHP restricts filesystem operations
+     * to the listed directories. Attempting is_dir(), is_writable(), etc. on paths
+     * outside the restriction will emit a warning and return false, which can produce
+     * misleading health check results (e.g., reporting a directory "does not exist"
+     * when it actually exists but is simply not accessible).
+     *
+     * @param string $path The absolute path to check
+     *
+     * @return bool True if the path is accessible (no restriction or within allowed paths)
+     *
+     * @since 3.9.9
+     */
+    protected function isPathAccessibleUnderOpenBasedir(string $path): bool
+    {
+        $openBasedir = ini_get('open_basedir');
+
+        if ($openBasedir === '' || $openBasedir === false) {
+            return true;
+        }
+
+        $separator = \PHP_OS_FAMILY === 'Windows' ? ';' : ':';
+        $allowedPaths = explode($separator, $openBasedir);
+
+        $realPath = @realpath($path);
+        $checkPath = $realPath !== false ? $realPath : $path;
+
+        foreach ($allowedPaths as $allowedPath) {
+            $allowedPath = rtrim($allowedPath, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR;
+
+            if (str_starts_with($checkPath . \DIRECTORY_SEPARATOR, $allowedPath)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
