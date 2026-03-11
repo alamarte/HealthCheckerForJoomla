@@ -648,6 +648,12 @@ use Joomla\Database\DatabaseInterface;
 
 class Pkg_HealthcheckerInstallerScript
 {
+    /**
+     * Plugins included in this package. Joomla's package uninstaller sometimes
+     * fails to cascade-delete plugins in custom groups, so we handle it manually.
+     */
+    private const PLUGINS = ['core', 'example', 'akeebabackup', 'akeebaadmintools', 'mysitesguru'];
+
     public function preflight(string $type, InstallerAdapter $parent): bool
     {
         if (version_compare(JVERSION, '5.0.0', '<')) {
@@ -659,6 +665,32 @@ class Pkg_HealthcheckerInstallerScript
             return false;
         }
         return true;
+    }
+
+    public function uninstall(InstallerAdapter $parent): void
+    {
+        $installer = \Joomla\CMS\Installer\Installer::getInstance();
+        $db = Factory::getContainer()->get(DatabaseInterface::class);
+
+        foreach (self::PLUGINS as $element) {
+            $query = $db->getQuery(true)
+                ->select($db->quoteName('extension_id'))
+                ->from($db->quoteName('#__extensions'))
+                ->where($db->quoteName('type') . ' = ' . $db->quote('plugin'))
+                ->where($db->quoteName('folder') . ' = ' . $db->quote('healthchecker'))
+                ->where($db->quoteName('element') . ' = ' . $db->quote($element));
+            $id = (int) $db->setQuery($query)->loadResult();
+
+            if ($id) {
+                $installer->uninstall('plugin', $id);
+            }
+        }
+
+        // Remove the plugin group directory if empty
+        $groupDir = JPATH_PLUGINS . '/healthchecker';
+        if (is_dir($groupDir) && count(glob($groupDir . '/*')) === 0) {
+            @rmdir($groupDir);
+        }
     }
 
     public function postflight(string $type, InstallerAdapter $parent): void
